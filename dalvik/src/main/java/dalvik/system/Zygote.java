@@ -135,6 +135,16 @@ public class Zygote {
     native public static int nativeForkAndSpecialize(int uid, int gid, int[] gids, int debugFlags,
             int[][] rlimits, int mountExternal, String seInfo, String niceName);
 
+    public static int noForkButSpecialize(int uid, int gid, int[] gids, int debugFlags,
+            int[][] rlimits, int mountExternal, String seInfo, String niceName) {
+        int res = nativeNoForkButSpecialize(
+                uid, gid, gids, debugFlags, rlimits, mountExternal, seInfo, niceName);
+        return res;
+    }
+
+    native public static int nativeNoForkButSpecialize(int uid, int gid, int[] gids, int debugFlags,
+            int[][] rlimits, int mountExternal, String seInfo, String niceName);
+
     /**
      * Special method to start the system server process. In addition to the
      * common actions performed in forkAndSpecialize, the pid of the child
